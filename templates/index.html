@@ -14,7 +14,15 @@
             <div class="author-intro">By: Roshan Sanjeev</div>
         </div>
     </div>
-
+    <div class="project-intro">
+        <p>
+            <em>About This Project:</em><br>
+            In today's digital age, information is constantly filtered, censored, and manipulated. 
+            This interactive blackout poetry experience symbolizes the struggle for truth against a backdrop of misinformation. 
+            As you uncover each hidden word, you piece together fragments of suppressed realities — a small act of resistance against distortion and silence.
+        </p>
+    </div>
+    
     <!-- Poem Content (Hidden at Start) -->
     <div class="poem" id="poem" style="display: none;">
         <p>In the age of <span class="censored" data-reveal="surveillance">█</span> and <span class="censored" data-reveal="control">█</span>,</p>
@@ -22,7 +30,13 @@
         <p><span class="censored" data-reveal="false">█</span> shadows dance across <span class="censored" data-reveal="headlines">█</span>,</p>
         <p>Where <span class="censored" data-reveal="truth">█</span> was meant to <span class="censored" data-reveal="shine">█</span>.</p>
     </div>
-
+    <div class="call-to-action">
+        <p>
+            <em>"Who controls the narrative controls reality.  
+            Stay critical. Uncover truth."</em>
+        </p>
+    </div>
+    
     <!-- Background Music -->
     <audio id="background-music" loop>
         <source src="{{ url_for('static', filename='audio/eerie-background.mp3') }}" type="audio/mpeg">
@@ -35,7 +49,13 @@
         <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0">
 
     </div>
-
+    <div class="credits">
+        <p>
+            Project created for <strong>ENG 134: Poetry and Justice</strong><br>
+            Professor David Toh Kusi — University of California, Merced
+        </p>
+    </div>
+    
     <script>
         const overlay = document.getElementById('overlay');
         const poem = document.getElementById('poem');

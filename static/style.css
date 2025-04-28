@@ -114,6 +114,29 @@ body {
     z-index: 1000;
     cursor: pointer;
 }
+.project-intro {
+    font-size: 1em;
+    color: #cccccc;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.call-to-action {
+    font-size: 1.2em;
+    color: #ff4c4c;
+    text-align: center;
+    margin-top: 40px;
+    font-style: italic;
+}
+
+.credits {
+    font-size: 0.8em;
+    color: #666666;
+    text-align: center;
+    margin-top: 60px;
+}
 
 .overlay-text {
     color: #ff4c4c;
