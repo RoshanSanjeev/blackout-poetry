@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blackout Poetry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="poem">
+        <p>In the age of <span class="censored">█</span> and <span class="censored">█</span>,</p>
+        <p><span class="censored">█</span> stories die in silence.</p>
+        <p><span class="censored">█</span> shadows dance across <span class="censored">█</span>,</p>
+        <p>Where <span class="censored">█</span> was meant to <span class="censored">█</span>.</p>
+    </div>
+
+    <script>
+        const censoredElements = document.querySelectorAll('.censored');
+        censoredElements.forEach(el => {
+            el.addEventListener('click', () => {
+                el.textContent = prompt('What truth lies beneath?');
+                el.classList.add('revealed');
+            });
+        });
+    </script>
+</body>
+</html>

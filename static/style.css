@@ -1,0 +1,50 @@
+body {
+    background-color: #0a0a0a;
+    color: #eeeeee;
+    font-family: 'Source Code Pro', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.poem {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.censored {
+    background-color: #111;
+    color: #111;
+    padding: 0 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #8b0000; /* dark red border */
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px #8b0000;
+}
+
+.censored:hover {
+    background-color: #222;
+    box-shadow: 0 0 10px #ff4c4c; /* brighter red glow on hover */
+    color: #222;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      opacity: 0.5;
+    }
+  }
+  
+  .censored {
+      animation: flicker 2s infinite;
+  }
+  
+.revealed {
+    background-color: transparent;
+    color: #ff4c4c; /* Blood red */
+}
