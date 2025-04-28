@@ -37,7 +37,10 @@ body {
     align-items: center;
     gap: 10px;
     z-index: 1001;
+    font-size: 2em;
+    color: #ff4c4c;
 }
+
 #mute-button {
     background-color: #0a0a0a;
     color: #ff4c4c;
