@@ -6,21 +6,78 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="poem">
-        <p>In the age of <span class="censored">█</span> and <span class="censored">█</span>,</p>
-        <p><span class="censored">█</span> stories die in silence.</p>
-        <p><span class="censored">█</span> shadows dance across <span class="censored">█</span>,</p>
-        <p>Where <span class="censored">█</span> was meant to <span class="censored">█</span>.</p>
+
+    <!-- Intro Overlay -->
+    <div id="overlay">
+        <div class="overlay-text">
+            <div>Click to Reveal the Hidden Truths</div>
+            <div class="author-intro">By: Roshan Sanjeev</div>
+        </div>
+    </div>
+
+    <!-- Poem Content (Hidden at Start) -->
+    <div class="poem" id="poem" style="display: none;">
+        <p>In the age of <span class="censored" data-reveal="surveillance">█</span> and <span class="censored" data-reveal="control">█</span>,</p>
+        <p><span class="censored" data-reveal="hidden">█</span> stories die in silence.</p>
+        <p><span class="censored" data-reveal="false">█</span> shadows dance across <span class="censored" data-reveal="headlines">█</span>,</p>
+        <p>Where <span class="censored" data-reveal="truth">█</span> was meant to <span class="censored" data-reveal="shine">█</span>.</p>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop autoplay>
+        <source src="{{ url_for('static', filename='audio/eerie-background.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Controls -->
+    <div id="controls">
+        <button id="mute-button">🔇</button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.05">
     </div>
 
     <script>
+        const overlay = document.getElementById('overlay');
+        const poem = document.getElementById('poem');
+        const music = document.getElementById('background-music');
+        const muteButton = document.getElementById('mute-button');
+        const volumeSlider = document.getElementById('volume-slider');
+    
+        // Set initial muted state
+        music.muted = true;
+        music.volume = 0.05; // very soft start
+    
+        overlay.addEventListener('click', () => {
+            overlay.classList.add('fade-out');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                poem.style.display = 'block';
+                // Now start music (after user clicked)
+                music.muted = false;
+                music.play();
+            }, 1000);
+        });
+    
+        // Censored word reveal logic
         const censoredElements = document.querySelectorAll('.censored');
         censoredElements.forEach(el => {
             el.addEventListener('click', () => {
-                el.textContent = prompt('What truth lies beneath?');
+                const revealText = el.getAttribute('data-reveal');
+                el.textContent = revealText;
                 el.classList.add('revealed');
             });
         });
+    
+        // Background Music Controls
+        muteButton.addEventListener('click', () => {
+            music.muted = !music.muted;
+            muteButton.textContent = music.muted ? '🔊' : '🔇';
+        });
+    
+        volumeSlider.addEventListener('input', () => {
+            music.volume = volumeSlider.value;
+        });
     </script>
+    
+
 </body>
 </html>
