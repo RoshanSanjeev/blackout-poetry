@@ -1,3 +1,4 @@
+/* General Page Styles */
 body {
     background-color: #0a0a0a;
     color: #eeeeee;
@@ -7,100 +8,31 @@ body {
     align-items: center;
     min-height: 100vh;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
+
+/* Intro Page Author Text */
 .author-intro {
-    margin-top: 40px; /* More vertical space */
-    font-size: 0.9em; /* Smaller font */
+    margin-top: 40px;
+    font-size: 0.9em;
     color: #777777;
     font-family: 'Source Code Pro', monospace;
-    letter-spacing: 1px; /* Small spacing between letters for clean look */
-    opacity: 0.8; /* Slightly faded for mystery effect */
+    letter-spacing: 1px;
+    opacity: 0.8;
 }
+
+/* Intro Fade-Out Animation */
 .fade-out {
     animation: fadeOut 1s forwards;
 }
 
 @keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
-#controls {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 1001;
-    font-size: 2em;
-    color: #ff4c4c;
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
 }
 
-#mute-button {
-    background-color: #0a0a0a;
-    color: #ff4c4c;
-    border: 2px solid #ff4c4c;
-    padding: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.8em;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-#mute-button:hover {
-    opacity: 1;
-}
-
-#volume-slider {
-    width: 120px;
-    accent-color: #ff4c4c;
-    cursor: pointer;
-}
-.poem {
-    text-align: center;
-    font-size: 1.5em;
-}
-
-.censored {
-    background-color: #111;
-    color: #111;
-    padding: 0 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: 1px solid #8b0000; /* dark red border */
-    transition: all 0.3s ease;
-    box-shadow: 0 0 5px #8b0000;
-}
-
-.censored:hover {
-    background-color: #222;
-    box-shadow: 0 0 10px #ff4c4c; /* brighter red glow on hover */
-    color: #222;
-}
-
-@keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-      opacity: 1;
-    }
-    20%, 24%, 55% {
-      opacity: 0.5;
-    }
-  }
-  
-  .censored {
-      animation: flicker 2s infinite;
-  }
-  
-  .revealed {
-    background-color: transparent;
-    color: #ff4c4c;
-    transition: color 0.8s ease, background-color 0.8s ease;
-}
+/* Overlay Styling */
 #overlay {
     position: fixed;
     top: 0;
@@ -114,6 +46,86 @@ body {
     z-index: 1000;
     cursor: pointer;
 }
+
+.overlay-text {
+    color: #ff4c4c;
+    font-size: 2em;
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Poem Styling */
+.poem {
+    text-align: center;
+    font-size: 1.5em;
+    opacity: 0; /* Start invisible */
+    transition: opacity 1s ease;
+}
+
+/* Censored Words */
+.censored {
+    background-color: #111;
+    color: #111;
+    padding: 0 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #8b0000;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px #8b0000;
+    animation: flicker 2s infinite;
+}
+
+.censored:hover {
+    background-color: #222;
+    box-shadow: 0 0 10px #ff4c4c;
+    color: #222;
+}
+
+/* Flicker Animation for Censored Words */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.5; }
+}
+
+/* Revealed Words Fade */
+.revealed {
+    background-color: transparent;
+    color: #ff4c4c;
+    transition: color 1s ease, background-color 1s ease, opacity 1s ease;
+    opacity: 1;
+}
+
+.revealed-fade {
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Volume Controls */
+#controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1001;
+    font-size: 2em;
+    color: #ff4c4c;
+}
+
+/* Volume Slider */
+#volume-slider {
+    width: 120px;
+    accent-color: #ff4c4c;
+    cursor: pointer;
+}
+
+/* Project Intro Text */
 .project-intro {
     font-size: 1em;
     color: #cccccc;
@@ -129,20 +141,21 @@ body {
     text-align: center;
     margin-top: 40px;
     font-style: italic;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
 }
 
+.call-to-action.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Credits Footer */
 .credits {
     font-size: 0.8em;
     color: #666666;
     text-align: center;
     margin-top: 60px;
 }
-
-.overlay-text {
-    color: #ff4c4c;
-    font-size: 2em;
-    font-family: 'Source Code Pro', monospace;
-    text-align: center;
-    padding: 20px;
-}
-
