@@ -23,32 +23,21 @@
             As you uncover each hidden word, you piece together fragments of suppressed realities — a small act of resistance against distortion and silence.
         </p>
     </div>
-    
-    <!-- Poem Content (Hidden at Start) -->
+
+    <!-- Poem Content -->
     <div class="poem" id="poem">
         <p>In the age of <span class="censored" data-reveal="surveillance">█</span> and <span class="censored" data-reveal="control">█</span>,</p>
         <p><span class="censored" data-reveal="hidden">█</span> stories die in silence.</p>
         <p><span class="censored" data-reveal="shadows">█</span> dance across <span class="censored" data-reveal="headlines">█</span>,</p>
         <p>Where <span class="censored" data-reveal="truth">█</span> was meant to <span class="censored" data-reveal="shine">█</span>.</p>
-    
+
         <br>
-    
+
         <p><span class="censored" data-reveal="False">█</span> headlines <span class="censored" data-reveal="bury">█</span> forgotten <span class="censored" data-reveal="voices">█</span>.</p>
         <p><span class="censored" data-reveal="Fear">█</span> replaces <span class="censored" data-reveal="hope">█</span>.</p>
         <p><span class="censored" data-reveal="Doubt">█</span> clouds every <span class="censored" data-reveal="memory">█</span>.</p>
         <p><span class="censored" data-reveal="Silence">█</span> becomes the <span class="censored" data-reveal="law">█</span>.</p>
         <p><span class="censored" data-reveal="Control">█</span> shapes the <span class="censored" data-reveal="future">█</span>.</p>
-    </div>
-    
-    
-    
-
-    <!-- Call to Action (Initially Hidden) -->
-    <div class="call-to-action" id="call-to-action">
-        <p>
-            <em>"Who controls the narrative controls reality.  
-            Stay critical. Uncover truth."</em>
-        </p>
     </div>
 
     <!-- Background Music -->
@@ -57,7 +46,7 @@
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Controls (Initially Hidden) -->
+    <!-- Controls -->
     <div id="controls" style="display: none;">
         <span id="volume-icon">🔊</span>
         <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0">
@@ -69,64 +58,44 @@
             Professor David Toh Kusi — University of California, Merced
         </p>
     </div>
-    
+
     <script>
         const overlay = document.getElementById('overlay');
         const poem = document.getElementById('poem');
         const music = document.getElementById('background-music');
         const volumeSlider = document.getElementById('volume-slider');
         const controls = document.getElementById('controls');
-        const callToAction = document.getElementById('call-to-action');
         const censoredElements = document.querySelectorAll('.censored');
 
         // Set up defaults
         music.volume = 0;
-        music.pause();  // start paused
-        poem.style.opacity = 0;  // poem hidden initially
-        callToAction.style.opacity = 0;
-        callToAction.style.visibility = 'hidden';
-        controls.style.display = 'none'; // Hide volume initially
+        music.pause();
+        poem.style.opacity = 0;
+        controls.style.display = 'none';
 
-        // Function to check if all words are revealed
-        function checkAllRevealed() {
-            let allRevealed = true;
-            censoredElements.forEach(el => {
-                if (!el.classList.contains('revealed')) {
-                    allRevealed = false;
-                }
-            });
-            if (allRevealed) {
-                callToAction.classList.add('show');
-            }
-        }
-
-        // When clicking intro overlay
         overlay.addEventListener('click', () => {
             overlay.classList.add('fade-out');
             setTimeout(() => {
                 overlay.style.display = 'none';
                 poem.style.opacity = 1;
-                controls.style.display = 'flex';  // Now show volume controls
+                controls.style.display = 'flex';
                 music.play();
             }, 1000);
         });
 
-        // Clicking censored words reveals them
         censoredElements.forEach(el => {
             el.addEventListener('click', () => {
                 const revealText = el.getAttribute('data-reveal');
                 el.textContent = revealText;
                 el.classList.add('revealed');
                 el.classList.add('revealed-fade');
-                checkAllRevealed();  // Check if all are revealed after each click
             });
         });
 
-        // Volume slider control
         volumeSlider.addEventListener('input', () => {
             music.volume = volumeSlider.value;
         });
     </script>
-    
+
 </body>
 </html>
