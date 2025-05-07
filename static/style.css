@@ -19,6 +19,26 @@ body {
     letter-spacing: 1px;
     opacity: 0.8;
 }
+.project-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ff4c4c;
+}
+
+.course-info p {
+    margin: 3px 0;
+    font-size: 1em;
+    color: #bbbbbb;
+    font-family: 'Source Code Pro', monospace;
+    letter-spacing: 0.5px;
+}
+
+.overlay-call {
+    margin-top: 30px;
+    font-size: 1.2em;
+    color: #ff4c4c;
+}
 
 .fade-out {
     animation: fadeOut 1s forwards;
@@ -136,8 +156,6 @@ body {
     font-style: italic;
     letter-spacing: 0.5px;
 }
-
-/* Remove flickerOnce class & show class if unused */
 
 
 .call-to-action.show {
