@@ -24,8 +24,7 @@
         </p>
     </div>
 
-        <!-- Poem Content -->
-        <!-- Poem Content -->
+    <!-- Poem Content -->
     <div class="poem" id="poem">
         <p>In the age of <span class="censored" data-reveal="surveillance">█</span> and control,</p>
         <p>Hidden stories die in <span class="censored" data-reveal="silence">█</span>.</p>
@@ -51,17 +50,10 @@
         <br>
 
         <p class="call-to-action">
-            <em>"Who controls the narrative controls reality.  
+            <em>"Whoever controls the narrative, controls reality.  
             Stay critical. Uncover truth."</em>
         </p>
-
-        <!-- Call to Action Final Message (HIDDEN AT FIRST) -->
-        <div class="call-to-action" id="call-to-action">
-            <p><em>"Who controls the narrative controls reality.  
-            Stay critical. Uncover truth."</em></p>
-        </div>
     </div>
-
 
     <!-- Background Music -->
     <audio id="background-music" loop>
@@ -88,7 +80,6 @@
         const music = document.getElementById('background-music');
         const volumeSlider = document.getElementById('volume-slider');
         const controls = document.getElementById('controls');
-        const callToAction = document.getElementById('call-to-action');
         const censoredElements = document.querySelectorAll('.censored');
 
         // Set up defaults
@@ -96,8 +87,6 @@
         music.pause();
         poem.style.opacity = 0;
         controls.style.display = 'none';
-        callToAction.style.opacity = 0;
-        callToAction.style.visibility = 'hidden';
 
         overlay.addEventListener('click', () => {
             overlay.classList.add('fade-out');
@@ -115,23 +104,8 @@
                 el.textContent = revealText;
                 el.classList.add('revealed');
                 el.classList.add('revealed-fade');
-                checkAllRevealed();
             });
         });
-
-        function checkAllRevealed() {
-            let allRevealed = true;
-            censoredElements.forEach(el => {
-                if (!el.classList.contains('revealed')) {
-                    allRevealed = false;
-                }
-            });
-            if (allRevealed) {
-                setTimeout(() => {
-                    callToAction.classList.add('show', 'flicker-once');
-                }, 500);
-            }
-        }
 
         volumeSlider.addEventListener('input', () => {
             music.volume = volumeSlider.value;

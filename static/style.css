@@ -134,10 +134,11 @@ body {
     text-align: center;
     margin-top: 40px;
     font-style: italic;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease;
+    letter-spacing: 0.5px;
 }
+
+/* Remove flickerOnce class & show class if unused */
+
 
 .call-to-action.show {
     opacity: 1;
